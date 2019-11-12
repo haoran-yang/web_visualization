@@ -15,6 +15,9 @@ def Ins_propor(request):
 
 def Fpd_ratio(request):
     return render(request, 'Fpd_ratio.html')
+    
+def Fpd_ratio_day(request):
+    return render(request, 'Fpd_ratio_day.html')
 
 def Abn_passRatio(request):
     return render(request, 'Abn_passRatio.html')

@@ -5,6 +5,7 @@ urlpatterns = [
             path('pass_ratio/',views.Ins_passRatio, name='pass_ratio'),
             path('ins_propor/',views.Ins_propor, name='ins_propor'),
             path('fpd_ratio/',views.Fpd_ratio, name='fpd_ratio'),
+            path('fpd_ratio_day/',views.Fpd_ratio_day, name='fpd_ratio_day'),
 
             path('abn_pass_ratio/',views.Abn_passRatio, name='abn_pass_ratio'),
 

@@ -169,40 +169,6 @@ function drawchart(cdata){
                         symbolSize: symbolsize,
                         lineStyle: {
                             normal: {
-                                color: colors[1],
-                                width: 2,
-                                // type: 'normal'
-                            }
-                        },
-                        itemStyle: {
-                            normal: {
-                                borderWidth: 2,
-                                borderColor: colors[1],
-                                color: colors[1]
-                            }
-                        },
-                        label:{
-                            normal:{
-                                show:true,
-                                position:'top',
-                                formatter:function(param){return (param.value*100).toFixed(0)+'%'}
-                                    },
-                                    emphasis: {
-                                        textStyle:{
-                                           color:colors[1],
-                                           fontSize:20
-                                        },  
-                                    },
-                              },
-                    },
-                    {   
-                        data: score_propor3,
-                        name:legend[2],
-                        type: 'line',
-                        symbol: 'circle',
-                        symbolSize: symbolsize,
-                        lineStyle: {
-                            normal: {
                                 color: colors[3],
                                 width: 2,
                                 // type: 'normal'
@@ -224,6 +190,40 @@ function drawchart(cdata){
                                     emphasis: {
                                         textStyle:{
                                            color:colors[3],
+                                           fontSize:20
+                                        },  
+                                    },
+                              },
+                    },
+                    {   
+                        data: score_propor3,
+                        name:legend[2],
+                        type: 'line',
+                        symbol: 'circle',
+                        symbolSize: symbolsize,
+                        lineStyle: {
+                            normal: {
+                                color: colors[1],
+                                width: 2,
+                                // type: 'normal'
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                borderWidth: 2,
+                                borderColor: colors[1],
+                                color: colors[1]
+                            }
+                        },
+                        label:{
+                            normal:{
+                                show:true,
+                                position:'top',
+                                formatter:function(param){return (param.value*100).toFixed(0)+'%'}
+                                    },
+                                    emphasis: {
+                                        textStyle:{
+                                           color:colors[1],
                                            fontSize:20
                                         },  
                                     },
