@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from Ins_app1.models import pass_ratio, score_propor, fpd_ratio
-from Ins_app1.serializers import InsScoreSerializer,InsScoreSerializer2, ProporSerializer, FpdSerializer
+from Ins_app1.serializers import InsScoreSerializer,InsScoreSerializer2, ProporSerializer, FpdSerializer,FpdSerializer2
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import JsonResponse
@@ -79,6 +79,13 @@ def FpdRatio_api(request):
             data = fpd_ratio.objects.filter(prod_line=prod_line,type_name=type_name,type_value=type_value).order_by('apply_mth')
             if data:
                 serializer = FpdSerializer(data, many=True)
+                return Response({'code': 0, 'data': serializer.data})
+            else:
+                return Response({'code': 1, 'data': []})
+        elif prod_line == 'no limit':
+            data = fpd_ratio.objects.order_by('apply_mth')
+            if data:
+                serializer = FpdSerializer2(data, many=True)
                 return Response({'code': 0, 'data': serializer.data})
             else:
                 return Response({'code': 1, 'data': []})

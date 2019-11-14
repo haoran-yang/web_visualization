@@ -54,6 +54,42 @@ function get_dt(){
     })
 };
 
+function get_fpd_day(filter_data){
+    // 匹配首逾数据并在前端显示
+    $.ajax({
+        type: 'POST',
+        url: "../v1/api/fpd_ratio/",
+        data: cdata = {'prod_line': 'no limit'},
+        success:function(dataset){
+            data = dataset.data;
+            for(var j=0;j<filter_data.length;j++){
+                var has_fpd = 0
+                for(var i=0;i<data.length;i++){
+                    if(data[i].prod_line==filter_data[j].prod_line&&data[i].apply_mth==filter_data[j].apply_dt&&data[i].type_name==filter_data[j].type_name&&data[i].type_value==filter_data[j].type_value&&data[i].ins_score==filter_data[j].ins_score){
+                        filter_data[j].fpd_ratio=data[i].fpd_ratio;
+                        has_fpd = 1
+                    }
+                };
+                if(has_fpd == 0){
+                    filter_data[j]['fpd_ratio'] = '-'
+                }
+            }
+            var cols = ['rule_describe','apply_dt','prod_line','type_name','type_value','ins_score','loan_nums','pass_ratio','fpd_ratio'];
+            // 逐行向table添加数据
+            for(var ii=0;ii < filter_data.length;ii++){
+                var x=document.getElementById('tb').insertRow();
+                for(var jj=0;jj<cols.length;jj++){
+                    if(cols[jj]=='pass_ratio'){v = toPercent(filter_data[ii][cols[jj]])} //Math.round(filter_data[i][cols[j]]*100)/100 保留2位小数
+                    else if(cols[jj]=='fpd_ratio'&&typeof(filter_data[ii]['fpd_ratio'])=='number'){v = toPercent(filter_data[ii]['fpd_ratio'])}
+                    else(v = filter_data[ii][cols[jj]])
+                    var cell1=x.insertCell();
+                    cell1.innerHTML=v;
+                    }
+                }
+        }
+    })
+};
+
 function creatTable(){
     $.ajax({
         type: 'POST',
@@ -67,7 +103,6 @@ function creatTable(){
             var end_dt = dt2.options[dt2.selectedIndex].text;
             var filter_data = new Array();
             var f_index = 0;
-            var cols = ['rule_describe','apply_dt','prod_line','type_name','type_value','ins_score','loan_nums','pass_ratio'];
             var rules = [
             {'prod_line':'POS贷','ins_score':'fs>100','type_name':'总体','type_value':'总体','loan_nums':50,'pass_ratio':0.65,'rule_describe':'单量>50 且 通过率>0.65','filter_type':1},
             {'prod_line':'POS贷','ins_score':'fs>100','type_name':'省份','type_value':'新疆维吾尔自治区','loan_nums':20,'pass_ratio':0.8,'rule_describe':'单量>20 且 通过率>0.8（新疆）','filter_type':1},
@@ -76,8 +111,7 @@ function creatTable(){
             {'prod_line':'K利贷','ins_score':'fs>100','type_name':'总体','type_value':'总体','loan_nums':10,'pass_ratio':0.4,'rule_describe':'单量>10 且 通过率>0.4','filter_type':1},
             {'prod_line':'K利贷','ins_score':'fs>100','type_name':'金额','type_value':'','loan_nums':10,'pass_ratio':0.4,'rule_describe':'单量>10 且 通过率>0.4','filter_type':2},
             {'prod_line':'K利贷','ins_score':'fs>100','type_name':'期数','type_value':'','loan_nums':10,'pass_ratio':0.4,'rule_describe':'单量>10 且 通过率>0.4','filter_type':2},
-        ]
-            // for (var i = 0; i < data.length; i++) {
+            ]
             for (var j = 0; j < rules.length; j++) {
                     v = filterMethod(data,begin_dt,end_dt,rules[j].prod_line,rules[j].ins_score,rules[j].type_name,rules[j].type_value,rules[j].loan_nums,rules[j].pass_ratio,rules[j].filter_type)
                     if(v){
@@ -86,8 +120,9 @@ function creatTable(){
                             filter_data[f_index] = v[i]
                             f_index += 1
                         }
-                    };
-                }
+                    }
+                };
+
             // 清空table数据
             var tb = document.getElementById('tb');
             var rowNum=tb.rows.length;
@@ -96,16 +131,8 @@ function creatTable(){
                     rowNum=rowNum-1;
                     i=i-1;
                 };
-            // 逐行向table添加数据
-            for(var ii=0;ii < filter_data.length;ii++){
-                var x=document.getElementById('tb').insertRow();
-                for(var jj=0;jj<cols.length;jj++){
-                    if(cols[jj]=='pass_ratio'){v = toPercent(filter_data[ii][cols[jj]])} //Math.round(filter_data[i][cols[j]]*100)/100 保留2位小数
-                    else(v = filter_data[ii][cols[jj]])
-                    var cell1=x.insertCell();
-                    cell1.innerHTML=v;
-                }
-                }
+
+            get_fpd_day(filter_data);
         }
     })
 };
