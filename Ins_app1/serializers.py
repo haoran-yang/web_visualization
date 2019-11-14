@@ -20,3 +20,8 @@ class FpdSerializer(serializers.ModelSerializer):
     class Meta:
         model = fpd_ratio
         fields = ('apply_mth','zc_nums','fpd_ratio','ins_score')
+
+class FpdSerializer2(serializers.ModelSerializer):
+    class Meta:
+        model = fpd_ratio
+        fields = ('apply_mth','prod_line','zc_nums','fpd_ratio','ins_score','type_name','type_value')
