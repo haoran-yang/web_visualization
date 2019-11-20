@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'fraud_monitor.wsgi.application'
 DATABASES = {
  'default': {
      'ENGINE': 'django.db.backends.mysql',
-     'NAME': 'local_monitor',
+     'NAME': 'demo_test',
      'USER':'root',
      'PASSWORD':'123456',
      'HOST':'localhost',
