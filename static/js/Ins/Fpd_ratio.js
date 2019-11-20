@@ -169,9 +169,9 @@ function options(title, maxData, valData, zcNums, fpdNums) {
                         return (param.value * 100).toFixed(2) + '% = ' + fpdNums[param.dataIndex] + ' / ' + zcNums[param.dataIndex]
                     },
                     position: 'right',
-                    align: 'left',
+                    align: 'right',
                     // 左对齐
-                    offset: [0, 0],
+                    offset: [0, -20],
                     textStyle: {
                         color: fontColor,
                         fontSize: lableSize,
