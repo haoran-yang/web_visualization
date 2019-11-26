@@ -15,3 +15,5 @@
 ### 5.js文件
 - /static/js路径下，包含bootstrap和echarts等主题文件和各功能块js文件。
 - js文件通过url匹配视图函数,使用ajax方法从model中获取序列化后的数据，echarts脚本将数据加工成图，返给html文件并呈现。
+
+[Django框架搭建demo地址](https://blog.csdn.net/haoran_yang/article/details/102503945 "Django框架搭建demo地址")
