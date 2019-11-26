@@ -29,7 +29,7 @@ function selectOnchang(){
 }
 
 function drawchart(cdata){
-    var legend = ['欺诈分=0','0<欺诈分<=100','欺诈分>100']
+    var legend = ['A','B','C']
     var symbolsize = 8
     $.ajax({
         type: 'POST',

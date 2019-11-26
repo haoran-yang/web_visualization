@@ -62,8 +62,8 @@ function drawchart(cdata){
     var main_ids = {'fs=0':['欺诈分=0','main'],'0<fs<=100':['0<欺诈分<=100','main2'],'fs>100':['欺诈分>100','main3']};
     var text = main_ids[cdata.ins_score][0];
     var main_id = main_ids[cdata.ins_score][1];
-
-    var legend = ['审批量','通过量','其他量','通过率']
+    
+    var legend = ['total','part1','part2','ratio']
     $.ajax({
         type: 'POST',
         url: "../v1/api/ins_score/",
@@ -98,7 +98,7 @@ function drawchart(cdata){
             var option = {
                 // backgroundColor: "#344b58",
                 title: {
-                    text: text,
+                    text: 'text name',
                     textStyle: {
                         //深红 #ff6600 ； 大红 #ff0000 ； 粉红 #ff66cc ； 淡红 #ff66ff ； 绿色 #ccff00 ； 紫蓝 #ff33ff ； 黄色 #ffff33 ； 金红 #cc0000 ； 
                         //天蓝 #66ffff ； 草绿 #66cc00 ； 深蓝 #3333ff ； 橙色 #ff9900 ； 深绿 #339900 ； 白色 #ffffff ； 黑色 #000000 ； 红色#FF0033；
@@ -188,7 +188,7 @@ function drawchart(cdata){
                     {
                         type: 'value',
                         name: '',
-                        // max: 1000,
+                        max: 2500,
                         // min: 0
                     },
                     {

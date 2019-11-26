@@ -72,7 +72,7 @@ function drawchart(cdata) {
 };
 
 function options(title, maxData, valData, zcNums, fpdNums) {
-    var itemData = ["欺诈分=0", "0<欺诈分<=100", "欺诈分>100"];
+    var itemData = ["Type A", "Type B", "Type C"];
     var spirit = 'path://M41.6,44.3 C39,43 35.6,40.6 35.6,38.5 C35.6,37.4 36,36.7 36.4,36.5 C41.4,33.7 43.1,24.5 43.4,24.5 C45.1,24.5 46.3,20.2 46.3,17.4 C46.3,15.1 45.6,15.2 44.4,14.5 L44.4,14.2 C44.4,6.7 38.5,1 31.1,1 C23.8,1 17.5,7 17.5,14.4 L17.5,14.7 C16.3,15.4 15.8,15.8 15.8,18 C15.8,20.9 16.8,24.9 18.5,24.9 C18.8,24.9 21,33.7 25.8,36.7 C26.1,36.9 26.6,37.4 26.6,38.4 C26.6,40.8 23.4,42.9 20.7,44.3 C17.4,46 1,47.4 1,63 L61,63 C61,47.4 45.7,46.4 41.6,44.3 L41.6,44.3 Z';
     var itemFontsize = 16;
     var lableSize = 16;
@@ -169,9 +169,9 @@ function options(title, maxData, valData, zcNums, fpdNums) {
                         return (param.value * 100).toFixed(2) + '% = ' + fpdNums[param.dataIndex] + ' / ' + zcNums[param.dataIndex]
                     },
                     position: 'right',
-                    align: 'right',
+                    align: 'left',
                     // 左对齐
-                    offset: [0, -20],
+                    offset: [0, 0],
                     textStyle: {
                         color: fontColor,
                         fontSize: lableSize,

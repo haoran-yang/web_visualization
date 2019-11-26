@@ -69,7 +69,7 @@ function options_day(apply_dt,zcnums1,zcnums2,zcnums3,fpdrate1,fpdrate2,fpdrate3
     var colors = ['#006382','#1F8A70','#977B2D','#FD7400'];
     option = {
         title: {
-            text: '注册量-首逾率',
+            text: 'Nums-Ratio',
             subtext: '',
             x: 'center'
         },
@@ -89,7 +89,7 @@ function options_day(apply_dt,zcnums1,zcnums2,zcnums3,fpdrate1,fpdrate2,fpdrate3
             }
         },
         legend: {
-            data:['0分','0-100分','大于100分'],
+            data:['Type A','Type B','Type C'],
             x: 'left'
         },
         toolbox: {
@@ -148,20 +148,20 @@ function options_day(apply_dt,zcnums1,zcnums2,zcnums3,fpdrate1,fpdrate2,fpdrate3
         ],
         yAxis : [
             {
-                name : '注册量',
+                name : '量',
                 type : 'value',
                 // max : 500
             },
             {
                 gridIndex: 1,
-                name : '首逾率',
+                name : '率',
                 type : 'value',
                 // inverse: true
             }
         ],
         series : [
             {
-                name:'0分',
+                name:'Type A',
                 type:'bar',
                 symbolSize: 8,
                 hoverAnimation: false,
@@ -175,7 +175,7 @@ function options_day(apply_dt,zcnums1,zcnums2,zcnums3,fpdrate1,fpdrate2,fpdrate3
                 },
             },
             {
-                name:'0-100分',
+                name:'Type B',
                 type:'bar',
                 symbolSize: 8,
                 hoverAnimation: false,
@@ -189,7 +189,7 @@ function options_day(apply_dt,zcnums1,zcnums2,zcnums3,fpdrate1,fpdrate2,fpdrate3
                 },
             },
             {
-                name:'大于100分',
+                name:'Type C',
                 type:'bar',
                 symbolSize: 8,
                 hoverAnimation: false,
@@ -203,7 +203,7 @@ function options_day(apply_dt,zcnums1,zcnums2,zcnums3,fpdrate1,fpdrate2,fpdrate3
                 },
             },
             {
-                name:'0分',
+                name:'Type A',
                 type:'line',
                 xAxisIndex: 1,
                 yAxisIndex: 1,
@@ -215,7 +215,7 @@ function options_day(apply_dt,zcnums1,zcnums2,zcnums3,fpdrate1,fpdrate2,fpdrate3
                 },
             },
             {
-                name:'0-100分',
+                name:'Type B',
                 type:'line',
                 xAxisIndex: 1,
                 yAxisIndex: 1,
@@ -227,7 +227,7 @@ function options_day(apply_dt,zcnums1,zcnums2,zcnums3,fpdrate1,fpdrate2,fpdrate3
                 },
             },
             {
-                name:'大于100分',
+                name:'Type C',
                 type:'line',
                 xAxisIndex: 1,
                 yAxisIndex: 1,
